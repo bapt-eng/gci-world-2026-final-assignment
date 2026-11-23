@@ -1,0 +1,157 @@
+{
+  "models_summary": {
+    "Logistic Regression (Baseline)": {
+      "ROC_AUC": 0.633,
+      "Log_Loss": 0.6662,
+      "Brier_Score": 0.2367,
+      "Precision": 0.594,
+      "Recall": 0.5825,
+      "F1_Score": 0.5882
+    },
+    "Random Forest (100 Trees)": {
+      "ROC_AUC": 0.6686,
+      "Log_Loss": 0.6498,
+      "Brier_Score": 0.2292,
+      "Precision": 0.6058,
+      "Recall": 0.6496,
+      "F1_Score": 0.627
+    },
+    "CatBoost (250 Trees)": {
+      "ROC_AUC": 0.689,
+      "Log_Loss": 0.6364,
+      "Brier_Score": 0.223,
+      "Precision": 0.627,
+      "Recall": 0.6512,
+      "F1_Score": 0.6389
+    },
+    "LightGBM GBDT (Optimis\u00e9)": {
+      "ROC_AUC": 0.698,
+      "Log_Loss": 0.6289,
+      "Brier_Score": 0.2198,
+      "Precision": 0.6352,
+      "Recall": 0.6503,
+      "F1_Score": 0.6427
+    },
+    "Stacking Ensemble (Super-Learner)": {
+      "ROC_AUC": 0.6961,
+      "Log_Loss": 0.6321,
+      "Brier_Score": 0.2211,
+      "Precision": 0.6323,
+      "Recall": 0.6552,
+      "F1_Score": 0.6436
+    }
+  },
+  "business_case": {
+    "targeted_subscribers": 5670,
+    "cohort_avg_arpu": 114.17,
+    "campaign_cost_usd": 737100.0,
+    "churners_saved": 1438,
+    "annual_arr_saved_usd": 1969884.67,
+    "revenue_protected_24m_usd": 3939769.33,
+    "net_gain_24m_usd": 3202669.33,
+    "roi_percentage": 434.5,
+    "payback_months": 4.49
+  },
+  "deciles": [
+    {
+      "decile": "D1",
+      "subscribers": 10000,
+      "actual_churn_rate": 0.5906,
+      "avg_monthly_rev": 147.742598083353,
+      "total_annual_revenue": 17729111.77000236,
+      "total_revenue_at_risk": 10021963.792799901,
+      "actual_churn_rate_pct": 59.06,
+      "revenue_at_risk_pct": 29.01
+    },
+    {
+      "decile": "D2",
+      "subscribers": 10000,
+      "actual_churn_rate": 0.5874,
+      "avg_monthly_rev": 84.41120008333701,
+      "total_annual_revenue": 10129344.01000044,
+      "total_revenue_at_risk": 5447197.766248336,
+      "actual_churn_rate_pct": 58.74,
+      "revenue_at_risk_pct": 15.77
+    },
+    {
+      "decile": "D3",
+      "subscribers": 10000,
+      "actual_churn_rate": 0.5506,
+      "avg_monthly_rev": 68.295953833349,
+      "total_annual_revenue": 8195514.46000188,
+      "total_revenue_at_risk": 4238136.403053312,
+      "actual_churn_rate_pct": 55.06,
+      "revenue_at_risk_pct": 12.27
+    },
+    {
+      "decile": "D4",
+      "subscribers": 10000,
+      "actual_churn_rate": 0.5518,
+      "avg_monthly_rev": 58.455657666662,
+      "total_annual_revenue": 7014678.91999944,
+      "total_revenue_at_risk": 3485409.1045770827,
+      "actual_churn_rate_pct": 55.18,
+      "revenue_at_risk_pct": 10.09
+    },
+    {
+      "decile": "D5",
+      "subscribers": 10000,
+      "actual_churn_rate": 0.5367,
+      "avg_monthly_rev": 50.482260333331,
+      "total_annual_revenue": 6057871.23999972,
+      "total_revenue_at_risk": 2927769.8062726636,
+      "actual_churn_rate_pct": 53.67,
+      "revenue_at_risk_pct": 8.48
+    },
+    {
+      "decile": "D6",
+      "subscribers": 10000,
+      "actual_churn_rate": 0.513,
+      "avg_monthly_rev": 44.367609333332,
+      "total_annual_revenue": 5324113.11999984,
+      "total_revenue_at_risk": 2493766.1219672463,
+      "actual_churn_rate_pct": 51.3,
+      "revenue_at_risk_pct": 7.22
+    },
+    {
+      "decile": "D7",
+      "subscribers": 10000,
+      "actual_churn_rate": 0.4881,
+      "avg_monthly_rev": 39.786406833331,
+      "total_annual_revenue": 4774368.81999972,
+      "total_revenue_at_risk": 2127263.833896514,
+      "actual_churn_rate_pct": 48.81,
+      "revenue_at_risk_pct": 6.16
+    },
+    {
+      "decile": "D8",
+      "subscribers": 10000,
+      "actual_churn_rate": 0.424,
+      "avg_monthly_rev": 37.358381916665,
+      "total_annual_revenue": 4483005.8299998,
+      "total_revenue_at_risk": 1768017.3836072308,
+      "actual_churn_rate_pct": 42.4,
+      "revenue_at_risk_pct": 5.12
+    },
+    {
+      "decile": "D9",
+      "subscribers": 10000,
+      "actual_churn_rate": 0.3652,
+      "avg_monthly_rev": 33.856990499998,
+      "total_annual_revenue": 4062838.85999976,
+      "total_revenue_at_risk": 1317836.2807788101,
+      "actual_churn_rate_pct": 36.52,
+      "revenue_at_risk_pct": 3.82
+    },
+    {
+      "decile": "D10",
+      "subscribers": 10000,
+      "actual_churn_rate": 0.3488,
+      "avg_monthly_rev": 22.0670479166642,
+      "total_annual_revenue": 2648045.749999704,
+      "total_revenue_at_risk": 715794.4553120477,
+      "actual_churn_rate_pct": 34.88,
+      "revenue_at_risk_pct": 2.07
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "status": "VALIDATED",
+  "dataset_rows": 100000,
+  "macro_stats": {
+    "churn_rate": 0.49562,
+    "avg_monthly_rev": 58.71998484590723,
+    "median_monthly_rev": 48.195,
+    "avg_total_rev": 1031.9249883000082,
+    "avg_eqp_days": 391.93230932309325,
+    "median_eqp_days": 342.0,
+    "avg_totcalls": 2877.14193,
+    "monthly_rev_lost_to_churn": 2870795.5333333486
+  },
+  "equipment_segments": [
+    {
+      "equipment_age_group": "1. R\u00e9cent (< 1 an)",
+      "customer_count": 54552,
+      "churn_rate_pct": 45.19,
+      "avg_arpu": 65.84,
+      "annual_churn_cost": 19579557.0
+    },
+    {
+      "equipment_age_group": "2. Moyen (1-2 ans)",
+      "customer_count": 34599,
+      "churn_rate_pct": 53.85,
+      "avg_arpu": 52.31,
+      "annual_churn_cost": 11644729.0
+    },
+    {
+      "equipment_age_group": "3. Ancien (> 2 ans)",
+      "customer_count": 10848,
+      "churn_rate_pct": 57.89,
+      "avg_arpu": 43.14,
+      "annual_churn_cost": 3225260.0
+    }
+  ]
+}

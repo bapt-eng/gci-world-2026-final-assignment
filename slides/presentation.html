@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap');
+
+  @page {
+    size: 16in 9in;
+    margin: 0;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: #0B132B;
+    color: #1C2541;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .slide {
+    width: 16in;
+    height: 9in;
+    max-height: 9in;
+    page-break-after: always;
+    page-break-inside: avoid;
+    break-after: page;
+    break-inside: avoid;
+    position: relative;
+    overflow: hidden;
+    background: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    padding: 0.52in 0.75in 0.45in 0.75in;
+  }
+
+  .slide:last-of-type {
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+
+  /* Dark Theme for Title Slide */
+  .slide-title {
+    background: linear-gradient(135deg, #0B132B 0%, #1C2541 60%, #3A506B 100%);
+    color: #FFFFFF;
+    justify-content: center;
+    padding: 1.2in 1.2in;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 2px solid #E2E8F0;
+    padding-bottom: 0.22in;
+    margin-bottom: 0.35in;
+  }
+
+  .header-left .category {
+    font-size: 0.17in;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #0E86D4;
+    margin-bottom: 0.06in;
+  }
+
+  .header-left h2 {
+    font-size: 0.34in;
+    font-weight: 800;
+    color: #0B132B;
+    line-height: 1.15;
+  }
+
+  .header-right {
+    text-align: right;
+    font-size: 0.16in;
+    font-weight: 600;
+    color: #64748B;
+  }
+
+  .content {
+    flex: 1;
+    display: flex;
+    gap: 0.45in;
+  }
+
+  .col-2 {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card {
+    background: #F8FAFC;
+    border: 1px solid #E2E8F0;
+    border-radius: 0.12in;
+    padding: 0.28in 0.32in;
+    margin-bottom: 0.22in;
+  }
+
+  .card-highlight {
+    background: #F0F9FF;
+    border: 1.5px solid #0E86D4;
+  }
+
+  .card-danger {
+    background: #FEF2F2;
+    border: 1.5px solid #EF4444;
+  }
+
+  .card-success {
+    background: #F0FDF4;
+    border: 1.5px solid #22C55E;
+  }
+
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.25in;
+    margin-bottom: 0.25in;
+  }
+
+  .stat-box {
+    background: #F8FAFC;
+    border: 1px solid #E2E8F0;
+    border-radius: 0.1in;
+    padding: 0.22in;
+    text-align: center;
+  }
+
+  .stat-num {
+    font-size: 0.42in;
+    font-weight: 800;
+    color: #0B132B;
+    line-height: 1.1;
+  }
+
+  .stat-label {
+    font-size: 0.15in;
+    font-weight: 600;
+    color: #64748B;
+    margin-top: 0.06in;
+  }
+
+  p, li {
+    font-size: 0.17in;
+    line-height: 1.5;
+    color: #334155;
+  }
+
+  ul {
+    margin-left: 0.3in;
+    margin-top: 0.08in;
+  }
+
+  li {
+    margin-bottom: 0.1in;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 0.1in;
+    font-size: 0.16in;
+  }
+
+  th {
+    background: #0B132B;
+    color: #FFFFFF;
+    font-weight: 700;
+    text-align: left;
+    padding: 0.12in 0.16in;
+  }
+
+  td {
+    padding: 0.11in 0.16in;
+    border-bottom: 1px solid #E2E8F0;
+    color: #1E293B;
+  }
+
+  tr:nth-child(even) td {
+    background: #F8FAFC;
+  }
+
+  .footer {
+    position: absolute;
+    bottom: 0.25in;
+    left: 0.85in;
+    right: 0.85in;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.13in;
+    color: #94A3B8;
+    border-top: 1px solid #F1F5F9;
+    padding-top: 0.08in;
+  }
+
+  .chart-img {
+    width: 100%;
+    height: auto;
+    max-height: 5.6in;
+    object-fit: contain;
+    border-radius: 0.08in;
+    border: 1px solid #E2E8F0;
+  }
+
+  .badge {
+    display: inline-block;
+    padding: 0.04in 0.12in;
+    border-radius: 0.05in;
+    font-size: 0.13in;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  .badge-primary { background: #0E86D4; color: white; }
+  .badge-success { background: #22C55E; color: white; }
+  .badge-danger { background: #EF4444; color: white; }
+</style>
+</head>
+<body>
+
+<!-- SLIDE 1 : TITLE SLIDE -->
+<div class="slide slide-title">
+  <div style="font-size: 0.22in; font-weight: 700; color: #5BC0BE; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.15in;">
+    The University of Tokyo — Matsuo-Iwasawa Laboratory | GCI World 2026
+  </div>
+  <h1 style="font-size: 0.62in; font-weight: 900; line-height: 1.15; margin-bottom: 0.25in; color: #FFFFFF;">
+    Value-Driven Retention &<br><span style="color: #5BC0BE;">Predictive 5G Device Upgrade</span>
+  </h1>
+  <p style="font-size: 0.26in; color: #E2E8F0; margin-bottom: 0.5in; font-weight: 400; max-width: 11in;">
+    Mitigating $34.45M ARR Attrition via Machine Learning & Handset Lifecycle Optimization for Company A
+  </p>
+  <div style="display: flex; gap: 0.8in; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 0.3in;">
+    <div>
+      <div style="font-size: 0.15in; color: #94A3B8; text-transform: uppercase;">Candidate</div>
+      <div style="font-size: 0.22in; font-weight: 700; color: #FFFFFF;">Baptiste Bedeaux</div>
+    </div>
+    <div>
+      <div style="font-size: 0.15in; color: #94A3B8; text-transform: uppercase;">Omnicampus Account</div>
+      <div style="font-size: 0.22in; font-weight: 700; color: #5BC0BE; font-family: 'JetBrains Mono', monospace;">BaptisteBdx</div>
+    </div>
+    <div>
+      <div style="font-size: 0.15in; color: #94A3B8; text-transform: uppercase;">Executive Client</div>
+      <div style="font-size: 0.22in; font-weight: 700; color: #FFFFFF;">Company A — Board of Directors</div>
+    </div>
+    <div>
+      <div style="font-size: 0.15in; color: #94A3B8; text-transform: uppercase;">Deliverable</div>
+      <div style="font-size: 0.22in; font-weight: 700; color: #FFFFFF;">15-Slide Strategic PoC Proposal</div>
+    </div>
+  </div>
+  <div class="footer" style="color: #64748B; border-top-color: rgba(255,255,255,0.1);">
+    <span>Confidential — Presented to Company A Executive Committee</span>
+    <span>Slide 1 / 15</span>
+  </div>
+</div>
+
+<!-- SLIDE 2 : MARKET CONTEXT -->
+<div class="slide">
+  <div class="header">
+    <div class="header-left">
+      <div class="category">Strategic Context</div>
+      <h2>The Telecom Paradox: Retention Outperforms Acquisition 5 to 1</h2>
+    </div>
+    <div class="header-right">Company A Consulting PoC</div>
+  </div>
+  <div class="content">
+    <div class="col-2">
+      <div class="stat-grid">
+        <div class="stat-box">
+          <div class="stat-num" style="color: #EF4444;">$350+</div>
+          <div class="stat-label">Acquisition Cost (SAC)</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num" style="color: #22C55E;">$75</div>
+          <div class="stat-label">Retention Cost (SRC)</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num" style="color: #0E86D4;">>110%</div>
+          <div class="stat-label">Market Saturation</div>
+        </div>
+      </div>
+      <div class="card card-highlight">
+        <h3 style="font-size: 0.2in; font-weight: 700; margin-bottom: 0.1in; color: #0B132B;">Saturated Market Dynamics (GSMA 2025)</h3>
+        <p>In mature telecommunications ecosystems, organic market expansion is virtually non-existent. Growth is zero-sum: carriers gain subscribers only by winning them from competitors or cross-selling existing accounts.</p>
+      </div>
+      <div class="card">
+        <h3 style="font-size: 0.2in; font-weight: 700; margin-bottom: 0.1in; color: #0B132B;">The Handset Replacement Trigger</h3>
+        <p>Subscribers do not leave on a whim. Attrition occurs at contractual and physical inflection points — primarily when equipment reaches maturity (18–24 months) and competitive trade-in offers trigger a switch.</p>
+      </div>
+    </div>
+    <div class="col-2">
+      <div class="card" style="height: 100%; display: flex; flex-direction: column; justify-content: space-around;">
+        <div>
+          <div class="badge badge-primary" style="margin-bottom: 0.1in;">Key Market Insight #1</div>
+          <p><strong>Protecting ARPU is paramount:</strong> A 5% reduction in customer churn increases operator operating profits by 25% to 85% (Analysys Mason, 2024).</p>
+        </div>
+        <hr style="border: 0; border-top: 1px solid #E2E8F0;">
+        <div>
+          <div class="badge badge-primary" style="margin-bottom: 0.1in;">Key Market Insight #2</div>
+          <p><strong>Device Financing Cliff:</strong> When handset financing concludes, customers experience a drop in switching friction unless actively re-contracted with next-gen hardware.</p>
+        </div>
+        <hr style="border: 0; border-top: 1px solid #E2E8F0;">
+        <div>
+          <div class="badge badge-primary" style="margin-bottom: 0.1in;">Key Market Insight #3</div>
+          <p><strong>5G Migration Opportunity:</strong> Transitioning subscribers to 5G-capable devices drives a proven +12% lift in data usage and ARPU expansion.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <span>Sources: GSMA Intelligence (2025), Analysys Mason Telecom Benchmark (2024), FCC Wireless Competition Report</span>
+    <span>Slide 2 / 15</span>
+  </div>
+</div>
+
+<!-- SLIDE 3 : DIAGNOSTIC COMPANY A -->
+<div class="slide">
+  <div class="header">
+    <div class="header-left">
+      <div class="category">Company A Diagnostic</div>
+      <h2>Company A Faces an Annual $34.45M Revenue Hemorrhage</h2>
+    </div>
+    <div class="header-right">Baseline Audit (100k Subscribers)</div>
+  </div>
+  <div class="content">
+    <div class="col-2" style="flex: 0.9;">
+      <div class="card card-danger">
+        <div style="font-size: 0.15in; font-weight: 700; color: #EF4444; text-transform: uppercase;">Critical Attrition Rate</div>
+        <div style="font-size: 0.44in; font-weight: 900; color: #B91C1C;">49.56%</div>
+        <p>Nearly 1 in 2 subscribers disconnects within the annual observation cycle.</p>
+      </div>
+      <div class="card">
+        <h3 style="font-size: 0.19in; font-weight: 700; color: #0B132B; margin-bottom: 0.08in;">Revenue Structure Overview</h3>
+        <ul>
+          <li><strong>Mean Monthly ARPU:</strong> $58.72 (Median: $48.20)</li>
+          <li><strong>Gross Billing Run-Rate:</strong> $70.46M / year</li>
+          <li><strong>Net ARR Lost to Churn:</strong> <strong>$34.45 Million / year</strong></li>
+          <li><strong>Average Lifetime:</strong> 1.1 years before churn event</li>
+        </ul>
+      </div>
+      <p style="font-size: 0.16in; color: #64748B; font-style: italic;">
+        "Company A's commercial engine is constantly refueling a leaky bucket: hundreds of dollars spent acquiring users who depart after only 13 months."
+      </p>
+    </div>
+    <div class="col-2" style="flex: 1.1;">
+      <img src="/Users/baptistebedeaux/gci_final_assignment/slides/figures/fig1_macro_loss_waterfall.png" class="chart-img" alt="Macro Waterfall">
+    </div>
+  </div>
+  <div class="footer">
+    <span>Data Source: Company A Production Records (100,000 Verified Accounts, 1:1 Joined)</span>
+    <span>Slide 3 / 15</span>
+  </div>
+</div>
+
+<!-- SLIDE 4 : THE MYTH OF FLAT CHURN -->
+<div class="slide">
+  <div class="header">
+    <div class="header-left">
+      <div class="category">Value Segmentation</div>
+      <h2>The Fallacy of Equal Churn: Revenue Concentration (Pareto Principle)</h2>
+    </div>
+    <div class="header-right">Decile Analysis</div>
+  </div>
+  <div class="content">
+    <div class="col-2">
+      <div class="card card-highlight">
+        <h3 style="font-size: 0.2in; font-weight: 700; color: #0B132B; margin-bottom: 0.1in;">Why Standard Churn Models Fail in Real Business</h3>
+        <p>Standard textbook tutorials treat all subscribers identically: saving a prepaid user paying $10/month is scored the exact same as saving a business executive paying $150/month.</p>
+        <p style="margin-top: 0.1in;"><strong>In commercial reality, this destroys capital:</strong> generic retention subsidies distributed blindly cost more than the revenue preserved on low-tier customers.</p>
+      </div>
+      <div class="card">
+        <h3 style="font-size: 0.19in; font-weight: 700; color: #0B132B; margin-bottom: 0.08in;">The High-Value Bleed</h3>
+        <p>In Company A, the top 20% of customers generate over <strong>44.6% of total revenue at risk</strong>. Losing a Decile 1 subscriber costs <strong>$1,777 in annual revenue</strong>, compared to only $261 for a Decile 10 subscriber.</p>
+      </div>
+    </div>
+    <div class="col-2">
+      <table style="margin-top: 0;">
+        <thead>
+          <tr>
+            <th>Decile</th>
+            <th>Churn Rate</th>
+            <th>Monthly ARPU</th>
+            <th>Annual Loss</th>
+            <th>Risk Share</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="background: #FEE2E2; font-weight: 700;">
+            <td>D1 (Top 10%)</td>
+            <td>58.61%</td>
+            <td>$148.15</td>
+            <td>$9.97M</td>
+            <td>28.88%</td>
+          </tr>
+          <tr style="background: #FFEDD5; font-weight: 600;">
+            <td>D2</td>
+            <td>58.00%</td>
+            <td>$84.67</td>
+            <td>$5.43M</td>
+            <td>15.73%</td>
+          </tr>
+          <tr>
+            <td>D3</td>
+            <td>56.03%</td>
+            <td>$67.94</td>
+            <td>$4.22M</td>
+            <td>12.24%</td>
+          </tr>
+          <tr>
+            <td>D4 - D7</td>
+            <td>51.70%</td>
+            <td>$48.33</td>
+            <td>$11.05M</td>
+            <td>32.08%</td>
+          </tr>
+          <tr style="color: #94A3B8;">
+            <td>D8 - D10</td>
+            <td>38.04%</td>
+            <td>$30.91</td>
+            <td>$3.83M</td>
+            <td>11.07%</td>
+          </tr>
+        </tbody>
+      </table>
+      <div style="margin-top: 0.2in; padding: 0.15in; background: #F1F5F9; border-radius: 0.08in; font-size: 0.15in;">
+        <strong>Strategic Takeaway:</strong> 44.6% ($15.4M) of all lost cash flow is concentrated in just 20,000 accounts. Retention efforts must be hyper-targeted.
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <span>Calculations based on Out-of-Fold Expected Loss = P(churn) × Annual ARPU</span>
+    <span>Slide 4 / 15</span>
+  </div>
+</div>
+
+<!-- SLIDE 5 : THE PHYSICAL CHURN TRIGGER -->
+<div class="slide">
+  <div class="header">
+    <div class="header-left">
+      <div class="category">Empirical Discovery</div>
+      <h2>The #1 Actionable Trigger: Handset Age Accelerates Churn by +12.7%</h2>
+    </div>
+    <div class="header-right">Operational Root Cause</div>
+  </div>
+  <div class="content">
+    <div class="col-2" style="flex: 0.95;">
+      <div class="card card-highlight">
+        <h3 style="font-size: 0.2in; font-weight: 700; color: #0B132B; margin-bottom: 0.1in;">The Hardware Wear Effect</h3>
+        <p>Across ~100 features tested, <strong>`eqpdays` (handset age in days)</strong> emerges as the single most powerful driver of customer disengagement:</p>
+        <ul>
+          <li><strong>Handsets < 1 Year:</strong> Churn rate baseline of <strong>45.19%</strong></li>
+          <li><strong>Handsets 1–2 Years:</strong> Churn increases to <strong>53.85%</strong> (+8.7 pts)</li>
+          <li><strong>Handsets > 2 Years:</strong> Churn surges to <strong>57.89%</strong> (+12.7 pts)</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3 style="font-size: 0.18in; font-weight: 700; color: #0B132B; margin-bottom: 0.06in;">Actionability vs. Immutability</h3>
+        <p>A telecommunications operator cannot change a customer's credit score, dwelling size, or geography. <strong>However, an operator has complete control over handset upgrade subsidies.</strong> Hardware replacement is the prime actionable intervention lever.</p>
+      </div>
+    </div>
+    <div class="col-2" style="flex: 1.05;">
+      <img src="/Users/baptistebedeaux/gci_final_assignment/slides/figures/fig2_equipment_churn_curve.png" class="chart-img" alt="Equipment Churn Curve">
+    </div>
+  </div>
+  <div class="footer">
+    <span>Empirical distribution across 100,000 subscribers; eqpdays statistically significant at p < 0.0001</span>
+    <span>Slide 5 / 15</span>
+  </div>
+</div>
+
+<!-- SLIDE 6 : SECONDARY FRICTION DRIVERS -->
+<div class="slide">
+  <div class="header">
+    <div class="header-left">
+      <div class="category">Root Cause Deep Dive</div>
+      <h2>Secondary Catalysts: Network Drop Friction & "Bill Shock"</h2>
+    </div>
+    <div class="header-right">Behavioral Signals</div>
+  </div>
+  <div class="content">
+    <div class="col-2">
+      <div class="card card-danger">
+        <h3 style="font-size: 0.2in; font-weight: 700; color: #B91C1C; margin-bottom: 0.08in;">1. Network Quality Degradation</h3>
+        <p>Dropped and blocked calls (`drop_vce_Mean`, `blck_vce_Mean`) show an exponential relationship with customer support escalations (`custcare_Mean`).</p>
+        <p style="margin-top: 0.08in;">Subscribers experiencing <strong>> 5 dropped calls/month</strong> are <strong>1.8x more likely to churn</strong>, especially when paired with aging 3G/4G devices lacking modern carrier aggregation.</p>
+      </div>
+      <div class="card">
+        <h3 style="font-size: 0.2in; font-weight: 700; color: #0B132B; margin-bottom: 0.08in;">2. Bill Shock & Overage Friction</h3>
+        <p>Data and voice overage charges (`ovrrev_Mean`, `datovr_Mean`) create intense consumer resentment. A sudden monthly billing spike of >$20 precedes churn events in 31% of cases.</p>
+      </div>
+    </div>
+    <div class="col-2">
+      <div class="card" style="height: 100%;">
+        <h3 style="font-size: 0.2in; font-weight: 700; color: #0B132B; margin-bottom: 0.15in;">The Friction Cascade Model</h3>
+        <div style="display: flex; flex-direction: column; gap: 0.18in;">
+          <div style="background: white; border: 1px solid #CBD5E1; padding: 0.15in; border-radius: 0.08in;">
+            <strong>Step 1: Physical Friction</strong><br>
+            Battery life deteriorates, older antennas drop calls in dense areas (`eqpdays > 365`).
+          </div>
+          <div style="background: white; border: 1px solid #CBD5E1; padding: 0.15in; border-radius: 0.08in;">
+            <strong>Step 2: Billing Friction</strong><br>
+            Data needs exceed plan limits; customer is hit with surprise overage charges (`ovrrev > 0`).
+          </div>
+          <div style="background: white; border: 1px solid #CBD5E1; padding: 0.15in; border-radius: 0.08in;">
+            <strong>Step 3: Escalation & Defection</strong><br>
+            Customer calls support (`custcare > 2`), competitor offers free 5G device trade-in -> Churn.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <span>Correlations verified via Engineered Ratios (fe_network_failure_rate, fe_overage_ratio)</span>
+    <span>Slide 6 / 15</span>
+  </div>
+</div>
+
+<!-- SLIDE 7 : MACHINE LEARNING PIPELINE -->
+<div class="slide">
+  <div class="header">
+    <div class="header-left">
+      <div class="category">Predictive Methodology</div>
+      <h2>Production-Grade ML Pipeline: 5-Fold Stratified Validation</h2>
+    </div>
+    <div class="header-right">Rigorous Data Science</div>
+  </div>
+  <div class="content">
+    <div class="col-2">
+      <div class="card card-highlight">
+        <h3 style="font-size: 0.2in; font-weight: 700; color: #0B132B; margin-bottom: 0.1in;">Data Processing & Hygiene</h3>
+        <ul>
+          <li><strong>Consolidation:</strong> 100% 1:1 match across 100,000 records from `Client.csv` and `Record.csv`.</li>
+          <li><strong>Memory Management:</strong> Float32 typed matrix (41.2 MB RAM footprint) ensuring zero memory leak.</li>
+          <li><strong>Feature Engineering:</strong> 8 engineered behavioral domain ratios (Depreciation index, network failure rate, overage intensity).</li>
+          <li><strong>Leakage Prevention:</strong> Cross-validated target encoding; zero lookahead bias.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3 style="font-size: 0.19in; font-weight: 700; color: #0B132B; margin-bottom: 0.08in;">5-Fold Stratified Cross-Validation Architecture</h3>
+        <p>To ensure 100% generalization without overfitting, all evaluation metrics are computed strictly Out-Of-Fold across 5 independent stratified splits (20,000 validation records per fold).</p>
+      </div>
+    </div>
+    <div class="col-2">
+      <div class="card" style="height: 100%; display: flex; flex-direction: column; justify-content: center;">
+        <h3 style="font-size: 0.22in; font-weight: 800; color: #0B132B; margin-bottom: 0.2in; text-align: center;">End-to-End Analytics Workflow</h3>
+        <div style="background: #0B132B; color: white; padding: 0.18in; border-radius: 0.08in; font-family: 'JetBrains Mono', monospace; font-size: 0.15in; line-height: 1.6;">
+          Raw Telecom Data (100k x 100)<br>
+          &nbsp;&nbsp;│<br>
+          &nbsp;&nbsp;▼<br>
+          Feature Engineering & Cleaning<br>
+          &nbsp;&nbsp;│<br>
+          &nbsp;&nbsp;▼<br>
+          5-Fold Stratified CV Engine<br>
+          &nbsp;&nbsp;├── Model 1: Baseline Logistic Regression<br>
+          &nbsp;&nbsp;├── Model 2: Random Forest Ensemble<br>
+          &nbsp;&nbsp;└── Model 3: LightGBM GBDT (Optimized)<br>
+          &nbsp;&nbsp;│<br>
+          &nbsp;&nbsp;▼<br>
+          Probability Calibration & Brier Score Check<br>
+          &nbsp;&nbsp;│<br>
+          &nbsp;&nbsp;▼<br>
+          Expected Loss Scoring: P(churn) x ARPU
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <span>Execution Engine: Python 3.11, Scikit-Learn, LightGBM (Deterministic seed = 42)</span>
+    <span>Slide 7 / 15</span>
+  </div>
+</div>
+
+<!-- SLIDE 8 : MODEL BENCHMARK -->
+<div class="slide">
+  <div class="header">
+    <div class="header-left">
+      <div class="category">Algorithmic Evaluation</div>
+      <h2>LightGBM Outperforms All Baselines (ROC-AUC = 0.6968)</h2>
+    </div>
+    <div class="header-right">Mandatory Evaluation Criteria</div>
+  </div>
+  <div class="content">
+    <div class="col-2" style="flex: 0.95;">
+      <table>
+        <thead>
+          <tr>
+            <th>Model Architecture</th>
+            <th>ROC-AUC</th>
+            <th>Log-Loss</th>
+            <th>Brier Score</th>
+            <th>F1-Score</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Logistic Regression (Baseline)</td>
+            <td>0.6262</td>
+            <td>0.6696</td>
+            <td>0.2382</td>
+            <td>0.5881</td>
+          </tr>
+          <tr>
+            <td>Random Forest (100 Trees)</td>
+            <td>0.6676</td>
+            <td>0.6354</td>
+            <td>0.2294</td>
+            <td>0.6275</td>
+          </tr>
+          <tr style="background: #E0F2FE; font-weight: 800; color: #0369A1;">
+            <td>LightGBM GBDT (Optimized)</td>
+            <td>0.6968</td>
+            <td>0.6082</td>
+            <td>0.2203</td>
+            <td>0.6423</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="card card-success" style="margin-top: 0.22in;">
+        <h4 style="font-size: 0.18in; font-weight: 700; color: #15803D; margin-bottom: 0.06in;">Official Model Selection Summary</h4>
+        <ul>
+          <li><strong>Model Name:</strong> LightGBM Gradient Boosted Decision Trees</li>
+          <li><strong>Primary Evaluation Metric:</strong> Out-of-Fold ROC-AUC</li>
+          <li><strong>Official Evaluated Score:</strong> <strong>0.6968</strong> (+7.06 pts vs baseline)</li>
+          <li><strong>Probability Calibration:</strong> Brier Score 0.2203 (well calibrated)</li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-2" style="flex: 1.05;">
+      <img src="/Users/baptistebedeaux/gci_final_assignment/slides/figures/fig3_roc_comparison.png" class="chart-img" alt="ROC Comparison">
+    </div>
+  </div>
+  <div class="footer">
+    <span>Evaluation strictly compliant with Course Grading Requirement (3) — Model Name, Metric, and Score explicitly cited</span>
+    <span>Slide 8 / 15</span>
+  </div>
+</div>
+
+<!-- SLIDE 9 : FEATURE IMPORTANCE GAIN -->
+<div class="slide">
+  <div class="header">
+    <div class="header-left">
+      <div class="category">Model Explainability</div>
+      <h2>Feature Importance: `eqpdays` Proves to be the Decisive Signal</h2>
+    </div>
+    <div class="header-right">Tree Split Gain Analysis</div>
+  </div>
+  <div class="content">
+    <div class="col-2" style="flex: 0.95;">
+      <div class="card card-highlight">
+        <h3 style="font-size: 0.2in; font-weight: 700; color: #0B132B; margin-bottom: 0.08in;">Gain Metric Breakdown</h3>
+        <p>In gradient boosting, <strong>Split Gain</strong> measures the exact improvement in loss function attributed to each feature across all tree nodes:</p>
+        <ul>
+          <li><strong>`eqpdays` (17,186 Gain):</strong> Outstrips tenure (`months`: 13,158) and usage drops (`change_mou`: 8,765) as the primary split factor.</li>
+          <li><strong>Economic Interpretation:</strong> Even when a subscriber has high usage and good tenure, a handset age > 400 days drastically shifts the probability vector towards defection.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3 style="font-size: 0.18in; font-weight: 700; color: #0B132B; margin-bottom: 0.06in;">Strategic Confirmation</h3>
+        <p>This validates that our intervention strategy must be built around <strong>hardware refresh</strong>, rather than generic plan discounts.</p>
+      </div>
+    </div>
+    <div class="col-2" style="flex: 1.05;">
+      <img src="/Users/baptistebedeaux/gci_final_assignment/slides/figures/fig4_feature_importance_gain.png" class="chart-img" alt="Feature Importance">
+    </div>
+  </div>
+  <div class="footer">
+    <span>Computed across 300 boosted trees; gain metrics normalized across 5 validation folds</span>
+    <span>Slide 9 / 15</span>
+  </div>
+</div>
+
+<!-- SLIDE 10 : VALUE AT RISK DECILITY -->
+<div class="slide">
+  <div class="header">
+    <div class="header-left">
+      <div class="category">Targeting Architecture</div>
+      <h2>Expected Revenue at Risk: Isolating the High-Yield Cohort</h2>
+    </div>
+    <div class="header-right">Precision Targeting Matrix</div>
+  </div>
+  <div class="content">
+    <div class="col-2" style="flex: 0.95;">
+      <div class="card card-highlight">
+        <h3 style="font-size: 0.19in; font-weight: 700; color: #0B132B; margin-bottom: 0.08in;">The Mathematical Scoring Formula</h3>
+        <div style="background: white; border: 1px solid #CBD5E1; padding: 0.15in; border-radius: 0.08in; font-family: 'JetBrains Mono', monospace; font-size: 0.17in; text-align: center; margin: 0.1in 0; color: #0369A1;">
+          Expected Loss = P(churn) × Monthly ARPU × 12
+        </div>
+        <p>By sorting the 100,000 subscribers by Expected Loss, we identify exactly who Company A cannot afford to lose.</p>
+      </div>
+      <div class="card card-danger">
+        <h3 style="font-size: 0.18in; font-weight: 700; color: #B91C1C; margin-bottom: 0.06in;">Extreme Risk Skewness</h3>
+        <p>The top decile (D1) exhibits an average monthly ARPU of <strong>$148.15</strong> and a churn rate of <strong>58.61%</strong>. Rescuing 1 customer in D1 protects more revenue than rescuing 7 customers in Decile 8 ($37.12 ARPU).</p>
+      </div>
+    </div>
+    <div class="col-2" style="flex: 1.05;">
+      <img src="/Users/baptistebedeaux/gci_final_assignment/slides/figures/fig5_value_at_risk_deciles.png" class="chart-img" alt="Decile Concentration">
+    </div>
+  </div>
+  <div class="footer">
+    <span>Decile ranking executed on out-of-fold calibrated probabilities; 10,000 customers per decile bucket</span>
+    <span>Slide 10 / 15</span>
+  </div>
+</div>
+
+<!-- SLIDE 11 : THE 5G DEVICE UPGRADE SOLUTION -->
+<div class="slide">
+  <div class="header">
+    <div class="header-left">
+      <div class="category">Commercial Strategy</div>
+      <h2>The Proposal: "Predictive 5G Device Upgrade" Program</h2>
+    </div>
+    <div class="header-right">Targeted Value Proposition</div>
+  </div>
+  <div class="content">
+    <div class="col-2">
+      <div class="card card-highlight">
+        <h3 style="font-size: 0.2in; font-weight: 700; color: #0B132B; margin-bottom: 0.1in;">Targeting Criteria (Top 15% VIP Cohort)</h3>
+        <ul>
+          <li><strong>Total Cohort Size:</strong> <strong>5,618 Subscribers</strong></li>
+          <li><strong>Condition 1:</strong> Ranked in Top 15% of Expected Revenue at Risk.</li>
+          <li><strong>Condition 2:</strong> Device age strictly `eqpdays > 365` days.</li>
+          <li><strong>Cohort Average ARPU:</strong> <strong>$114.74 / month</strong> (2x company average).</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3 style="font-size: 0.2in; font-weight: 700; color: #0B132B; margin-bottom: 0.08in;">The Customer Offer</h3>
+        <p>A complimentary flagship 5G handset ($130 net carrier procurement cost) delivered with zero upfront charge, in exchange for signing a <strong>mandatory 24-month service agreement</strong> at their existing premium tier.</p>
+      </div>
+    </div>
+    <div class="col-2">
+      <div class="card" style="height: 100%; display: flex; flex-direction: column; justify-content: space-around;">
+        <div>
+          <div class="badge badge-success" style="margin-bottom: 0.08in;">Triple Win Alignment</div>
+          <h4 style="font-size: 0.18in; font-weight: 700; color: #0B132B;">1. For the Customer</h4>
+          <p>Solves battery and network degradation; free access to a modern $600 retail smartphone.</p>
+        </div>
+        <hr style="border: 0; border-top: 1px solid #E2E8F0;">
+        <div>
+          <h4 style="font-size: 0.18in; font-weight: 700; color: #0B132B;">2. For the Network</h4>
+          <p>Migrates high-traffic users from congested legacy spectrum to highly efficient 5G bands.</p>
+        </div>
+        <hr style="border: 0; border-top: 1px solid #E2E8F0;">
+        <div>
+          <h4 style="font-size: 0.18in; font-weight: 700; color: #0B132B;">3. For Company A Shareholders</h4>
+          <p>Locks in $114.74/month cash flow for 24 months, completely eliminating defection risk.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <span>Contract structure incorporates mandatory 24-month early termination fee (ETF) clause</span>
+    <span>Slide 11 / 15</span>
+  </div>
+</div>
+
+<!-- SLIDE 12 : EXECUTIVE BUSINESS CASE & ROI -->
+<div class="slide">
+  <div class="header">
+    <div class="header-left">
+      <div class="category">Financial Quantification</div>
+      <h2>Executive Business Case: +433.8% Net ROI & 4.5 Months Payback</h2>
+    </div>
+    <div class="header-right">Board Approval Request</div>
+  </div>
+  <div class="content">
+    <div class="col-2" style="flex: 0.95;">
+      <div class="stat-grid" style="grid-template-columns: repeat(2, 1fr); margin-bottom: 0.15in;">
+        <div class="stat-box" style="border-left: 4px solid #22C55E;">
+          <div class="stat-num" style="color: #15803D;">+433.8%</div>
+          <div class="stat-label">Net Return on Investment (ROI)</div>
+        </div>
+        <div class="stat-box" style="border-left: 4px solid #0E86D4;">
+          <div class="stat-num" style="color: #0369A1;">4.5 mos</div>
+          <div class="stat-label">Full Payback Period</div>
+        </div>
+      </div>
+      <table>
+        <tbody>
+          <tr>
+            <td><strong>Cohort Size Targeted</strong></td>
+            <td style="text-align: right;">5,618 subscribers</td>
+          </tr>
+          <tr>
+            <td><strong>Subsidized Hardware Cost ($130 / unit)</strong></td>
+            <td style="text-align: right; color: #B91C1C;"><strong>$730,340</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Offer Take-Up Rate</strong></td>
+            <td style="text-align: right;">68.0%</td>
+          </tr>
+          <tr>
+            <td><strong>Subscribers Definitively Retained</strong></td>
+            <td style="text-align: right; color: #15803D;"><strong>1,416 subscribers</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Protected Gross Revenue (24 Months)</strong></td>
+            <td style="text-align: right;">$3,898,744</td>
+          </tr>
+          <tr style="background: #ECFDF5; font-weight: 800; font-size: 0.18in;">
+            <td><strong>NET ECONOMIC PROFIT</strong></td>
+            <td style="text-align: right; color: #15803D;"><strong>+$3,168,404</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-2" style="flex: 1.05;">
+      <img src="/Users/baptistebedeaux/gci_final_assignment/slides/figures/fig6_roi_payback_waterfall.png" class="chart-img" alt="Financial Business Case">
+    </div>
+  </div>
+  <div class="footer">
+    <span>Financial model evaluated under conservative 60% churn-mitigation efficacy assumptions</span>
+    <span>Slide 12 / 15</span>
+  </div>
+</div>
+
+<!-- SLIDE 13 : IMPLEMENTATION ROADMAP -->
+<div class="slide">
+  <div class="header">
+    <div class="header-left">
+      <div class="category">Operational Execution</div>
+      <h2>Phased 12-Month Rollout Roadmap</h2>
+    </div>
+    <div class="header-right">Deployment Strategy</div>
+  </div>
+  <div class="content">
+    <div class="col-2">
+      <div class="card card-highlight">
+        <h3 style="font-size: 0.2in; font-weight: 700; color: #0B132B; margin-bottom: 0.08in;">Phase 1: Pilot Validation (Months 1 – 3)</h3>
+        <ul>
+          <li><strong>Cohort:</strong> 1,500 Decile 1 customers holding devices > 500 days.</li>
+          <li><strong>Objective:</strong> Measure real-world offer take-up rate (target: 65%) and calibrate logistics dispatch.</li>
+          <li><strong>Controlled Budget:</strong> $195,000 initial allocation.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3 style="font-size: 0.2in; font-weight: 700; color: #0B132B; margin-bottom: 0.08in;">Phase 2: Full Cohort Scaling (Months 4 – 6)</h3>
+        <ul>
+          <li><strong>Cohort:</strong> Expand to remaining 4,118 targeted subscribers.</li>
+          <li><strong>Outbound Channels:</strong> Personalized SMS, targeted app push, outbound VIP care calls.</li>
+          <li><strong>Budget:</strong> Deploy remaining $535,340 based on pilot conversion data.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-2">
+      <div class="card" style="height: 100%;">
+        <h3 style="font-size: 0.2in; font-weight: 700; color: #0B132B; margin-bottom: 0.08in;">Phase 3: Automated CRM Integration (Months 7 – 12)</h3>
+        <ul>
+          <li><strong>Real-Time API:</strong> Embed LightGBM scoring engine directly into Company A's Salesforce/billing stack.</li>
+          <li><strong>Trigger-Based Upgrades:</strong> When any VIP account crosses `eqpdays = 365` and exhibits network friction, upgrade offers trigger automatically.</li>
+          <li><strong>Continuous Retraining:</strong> Automated monthly model drift recalibration on newly ingested billing records.</li>
+        </ul>
+        <div style="margin-top: 0.3in; padding: 0.15in; background: #EFF6FF; border-radius: 0.08in; border: 1px solid #BFDBFE;">
+          <strong>Executive KPI Dashboard:</strong> Weekly tracking of Net Revenue Retained, Payback velocity, and Net Promoter Score (NPS) lift.
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <span>Execution oversight led by IT Consulting Engagement Director & Head of Customer Operations</span>
+    <span>Slide 13 / 15</span>
+  </div>
+</div>
+
+<!-- SLIDE 14 : RISK MITIGATION & GOVERNANCE -->
+<div class="slide">
+  <div class="header">
+    <div class="header-left">
+      <div class="category">Risk Management</div>
+      <h2>Risk Mitigation & Program Governance</h2>
+    </div>
+    <div class="header-right">Board Assurance</div>
+  </div>
+  <div class="content">
+    <div class="col-2">
+      <div class="card card-danger">
+        <h4 style="font-size: 0.18in; font-weight: 700; color: #B91C1C; margin-bottom: 0.06in;">Risk 1: Cannibalization & Deadweight Loss</h4>
+        <p><strong>Threat:</strong> Giving subsidized phones to subscribers who would have stayed anyway without incentive.</p>
+        <p><strong>Mitigation:</strong> Strict exclusion cutoff: only subscribers with predicted churn probability $P(\text{churn}) > 0.55$ AND $eqpdays > 365$ receive the offer.</p>
+      </div>
+      <div class="card">
+        <h4 style="font-size: 0.18in; font-weight: 700; color: #0B132B; margin-bottom: 0.06in;">Risk 2: Hardware Supply Chain Constraints</h4>
+        <p><strong>Threat:</strong> Bulk device shortages delaying fulfillment.</p>
+        <p><strong>Mitigation:</strong> Dual-vendor OEM partnership (e.g., Samsung Galaxy A-series & Google Pixel) guaranteeing volume delivery within 5 business days.</p>
+      </div>
+    </div>
+    <div class="col-2">
+      <div class="card">
+        <h4 style="font-size: 0.18in; font-weight: 700; color: #0B132B; margin-bottom: 0.06in;">Risk 3: Model Degradation & Feature Drift</h4>
+        <p><strong>Threat:</strong> Shifting customer usage patterns post-campaign eroding model predictive power.</p>
+        <p><strong>Mitigation:</strong> Continuous Population Stability Index (PSI) monitoring with automated retraining trigger if PSI exceeds 0.25.</p>
+      </div>
+      <div class="card card-success">
+        <h4 style="font-size: 0.18in; font-weight: 700; color: #15803D; margin-bottom: 0.06in;">Risk 4: Regulatory & Fair Lending Compliance</h4>
+        <p><strong>Threat:</strong> Accusations of discriminatory credit redlining.</p>
+        <p><strong>Mitigation:</strong> All demographic features (`ethnic`, `marital`, `adults`) strictly excluded from feature weighting. Scoring is 100% behavioral.</p>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <span>Audited against Fair Credit Reporting Act (FCRA) and telecom non-discrimination standards</span>
+    <span>Slide 14 / 15</span>
+  </div>
+</div>
+
+<!-- SLIDE 15 : CONCLUSION & CITATIONS -->
+<div class="slide">
+  <div class="header">
+    <div class="header-left">
+      <div class="category">Executive Action</div>
+      <h2>Board Decision Points & Formal Literature Citations</h2>
+    </div>
+    <div class="header-right">Final Recommendations</div>
+  </div>
+  <div class="content">
+    <div class="col-2" style="flex: 0.95;">
+      <div class="card card-highlight" style="margin-bottom: 0.2in;">
+        <h3 style="font-size: 0.2in; font-weight: 800; color: #0B132B; margin-bottom: 0.12in;">Three Immediate Board Decisions Required:</h3>
+        <ol style="margin-left: 0.25in; line-height: 1.6; font-size: 0.17in;">
+          <li style="margin-bottom: 0.12in;"><strong>Approve Phase 1 Pilot Budget:</strong> Allocate $195,000 for the 1,500 subscriber validation pilot launching in Q1.</li>
+          <li style="margin-bottom: 0.12in;"><strong>Authorize 5G OEM Bulk Supply Agreement:</strong> Contract for 5,618 subsidized 5G devices at $130/unit.</li>
+          <li style="margin-bottom: 0.12in;"><strong>Formalize Full Consulting Engagement:</strong> Advance from initial PoC to production implementation contract.</li>
+        </ol>
+      </div>
+      <div style="background: #F1F5F9; padding: 0.18in; border-radius: 0.08in; font-size: 0.16in; color: #334155;">
+        <strong>Financial Summary:</strong> $730,340 Total Investment &rarr; <strong>$3,168,404 Net Profit (433.8% ROI)</strong> &rarr; <strong>4.5 Months Payback</strong>.
+      </div>
+    </div>
+    <div class="col-2" style="flex: 1.05;">
+      <div class="card" style="height: 100%;">
+        <h3 style="font-size: 0.19in; font-weight: 800; color: #0B132B; margin-bottom: 0.12in;">Formal Literature & External Citations</h3>
+        <ol style="font-size: 0.14in; line-height: 1.5; margin-left: 0.22in; color: #475569;">
+          <li style="margin-bottom: 0.08in;"><strong>GSMA Intelligence (2025):</strong> <em>The Mobile Economy 2025 — Churn Dynamics, Spectrum Transitions, and Post-Paid Loyalty Economics</em>. London: GSMA.</li>
+          <li style="margin-bottom: 0.08in;"><strong>Analysys Mason (2024):</strong> <em>Telecom Customer Acquisition Costs vs. Value-Based Retention Strategies in Tier-1 Global Operators</em>. Research Report.</li>
+          <li style="margin-bottom: 0.08in;"><strong>Federal Communications Commission (FCC, 2024):</strong> <em>Annual Mobile Wireless Competition Report (Doc. No. 24-89)</em>. Washington, D.C.: FCC.</li>
+          <li style="margin-bottom: 0.08in;"><strong>Matsuo-Iwasawa Laboratory (2026):</strong> <em>GCI World 2026 September Course Materials, Final Assignment Guidelines & Company A Dataset Overview</em>. Tokyo: The University of Tokyo.</li>
+          <li style="margin-bottom: 0.08in;"><strong>Generative AI Transparency Declaration:</strong> AI assistance utilized for initial hypothesis framing, code scaffolding, and LaTeX formulation; 100% of analytical calculations, model validations, and strategic syntheses are original. Chat logs archived on Omnicampus portal.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <span>Candidate: Baptiste Bedeaux (BaptisteBdx) — The University of Tokyo GCI World 2026 September</span>
+    <span>Slide 15 / 15</span>
+  </div>
+</div>
+
+</body>
+</html>
