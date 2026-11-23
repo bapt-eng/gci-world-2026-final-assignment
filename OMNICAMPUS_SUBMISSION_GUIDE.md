@@ -29,7 +29,7 @@ Value-Driven Retention & Predictive 5G Device Upgrade: Mitigating $34.4M ARR Chu
 
 #### URL de Référence (*Reference URL*) :
 ```text
-https://github.com/BaptisteBdx/gci-world-2026-final-assignment
+https://github.com/bapt-eng/gci-world-2026-final-assignment
 ```
 
 #### Champ des Références / Sources (*List of References*) :
