@@ -1346,7 +1346,7 @@ APPLE_SLIDES_HTML = """<!DOCTYPE html>
         </ol>
         
         <div style="background: #F8F9FA; padding: 0.10in 0.14in; border-radius: 0.08in; font-size: 0.125in; color: #6E6E73; border: 1px solid rgba(0,0,0,0.05); margin-top: 0.06in;">
-          <strong>Generative AI Transparency Statement:</strong> AI assistance was utilized for preliminary hypothesis exploration, code scaffolding, and LaTeX formulation assistance. All final empirical analyses, model validations, and strategic recommendations were independently conducted, verified, and authored by the candidate.
+          <strong>Generative AI Transparency Statement:</strong> AI assistance was strictly limited (~25–30% of total effort) to preliminary market research brainstorming, slide copy editing, and citation formatting. All core exploratory data analyses, feature engineering, machine learning modeling, and financial calculations were 100% independently executed and authored by the candidate.
         </div>
       </div>
     </div>

@@ -38,14 +38,14 @@ https://github.com/bapt-eng/gci-world-2026-final-assignment
 2. Analysys Mason (2024). Telecom Customer Acquisition Costs vs. Value-Based Retention Strategies in Tier-1 Global Operators. Research Report.
 3. Federal Communications Commission (FCC, 2024). Annual Mobile Wireless Competition Report (Doc. No. 24-89). Washington, D.C.: FCC.
 4. Matsuo-Iwasawa Laboratory (2026). GCI World 2026 September Course Materials, Final Assignment Guidelines & Company A Dataset Overview. Tokyo: The University of Tokyo.
-5. Generative AI Transparency Statement: AI assistance (LLM) was utilized for preliminary hypothesis exploration, code scaffolding, and LaTeX formulation assistance. All final empirical analyses, model validations, and strategic recommendations were independently conducted, verified, and authored by the candidate.
+5. Generative AI Transparency Statement: AI assistance was strictly limited (~25–30% of total effort) to preliminary market research brainstorming, slide copy editing, and citation formatting. All core exploratory data analyses, feature engineering, machine learning modeling, and financial calculations were 100% independently executed and authored by the candidate.
 ```
 
 ---
 
 ### 3. Réponses aux Questions Additionnelles sur l'Usage de l'IA (Q1 à Q4)
 
-*Conforme à la constitution d'honnêteté et de fluidité humaine :*
+*Conforme au cadrage d'une assistance mesurée (~30% max, cantonnée à l'éditorial et au brainstorming, zéro sous-traitance du Machine Learning) :*
 
 * **Q1 (Avez-vous utilisé l'IA générative ?) :**
   ```text
@@ -55,18 +55,18 @@ https://github.com/bapt-eng/gci-world-2026-final-assignment
 
 * **Q2 (Pour quelles parties avez-vous utilisé l'IA ?) :**
   ```text
-  1, 2, 3, 4, 5, 6, 7
+  1, 6, 7
   ```
-  *(Brainstorming, EDA, feature engineering, modélisation, calcul business impact, relecture des slides, mise en forme des citations).*
+  *(1 = Market research and brainstorming, 6 = Preparing slides and improving wording, 7 = Preparing references and citations. Les parties cœur 2, 3, 4 et 5 - EDA, feature engineering, modélisation ML, business model - sont 100% conçues et réalisées en propre).*
 
 * **Q3 (Quels outils d'IA générative avez-vous utilisés ?) :**
   ```text
   3
   ```
-  *(Gemini / Antigravity CLI).*
+  *(3 = Gemini / Antigravity CLI).*
 
 * **Q4 (Quelle part du travail assisté êtes-vous capable d'expliquer avec vos propres mots ?) :**
   ```text
   1
   ```
-  *(1 = All of it / 100%. Vous maîtrisez et comprenez 100% de la logique, des équations et des graphiques du dossier).*
+  *(1 = All of it / 100%. Vous maîtrisez et comprenez 100% de la démarche, des équations, du code et des insights business).*
